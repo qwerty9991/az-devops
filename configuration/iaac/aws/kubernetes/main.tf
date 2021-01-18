@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     bucket = "mybucket" # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
-    region = "us-east-1"
+    //region = "us-east-1"
   }
 }
 
@@ -33,8 +33,8 @@ module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.17"
-  subnets         = ["subnet-3f7b2563", "subnet-4a7d6a45", "subnet-ab24e9f7"] #CHANGE # Donot choose subnet from us-east-1e
-  #subnets = data.aws_subnet_ids.subnets.ids
+  #subnets         = ["subnet-cf219eee", "subnet-5c3f8203", "subnet-0a86413b", "subnet-6598f26b"] #CHANGE # Donot choose #subnet from us-east-1e
+  subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
   #vpc_id         = "vpc-1234556abcdef"
 
