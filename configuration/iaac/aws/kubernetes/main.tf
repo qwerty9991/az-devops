@@ -7,11 +7,19 @@
 
 terraform {
   backend "s3" {
-    bucket = "mybucket" # Will be overridden from build
-    key    = "path/to/my/key" # Will be overridden from build
+    bucket = "az-aws-pipeline" # Will be overridden from build
+    key    = "az-aws-pipeline.tfstate" # Will be overridden from build
     region = "us-east-1"
   }
 }
+
+# resource "aws_s3_bucket" "mys3" {
+#   bucket = "aws-azure-pipe334"
+#   versioning {
+#     enabled = true
+#   }
+# }
+
 
 resource "aws_default_vpc" "default" {
 
@@ -20,6 +28,14 @@ resource "aws_default_vpc" "default" {
 data "aws_subnet_ids" "subnets" {
   vpc_id = aws_default_vpc.default.id
 }
+#
+
+# output "def_vpc-id" {
+#   value = aws_default_vpc.default.id
+# }
+
+
+
 
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
@@ -58,7 +74,7 @@ data "aws_eks_cluster_auth" "cluster" {
 
 
 # We will use ServiceAccount to connect to K8S Cluster in CI/CD mode
-# ServiceAccount needs permissions to create deployments 
+# ServiceAccount needs permissions to create deployments
 # and services in default namespace
 resource "kubernetes_cluster_role_binding" "example" {
   metadata {
