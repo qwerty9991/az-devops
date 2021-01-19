@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -18,6 +18,6 @@ steps:
     provider: 'aws'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
-    backendServiceAWS: 'aws-az-pipeline'
-    backendAWSBucketName: 'az-aws-pipeline'
-    backendAWSKey: 'finally'
+    backendServiceAWS: 'az-aws-devs'
+    backendAWSBucketName: 'aws-azure-pipe334'
+    backendAWSKey: 'az-aws-pipeline-test-region.tfstate'
