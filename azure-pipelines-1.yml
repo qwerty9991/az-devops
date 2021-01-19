@@ -21,3 +21,10 @@ steps:
     backendServiceAWS: 'az-aws-devs'
     backendAWSBucketName: 'aws-azure-pipe334'
     backendAWSKey: 'az-aws-pipeline-test-region.tfstate'
+
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+    environmentServiceNameAWS: 'az-aws-devs'
