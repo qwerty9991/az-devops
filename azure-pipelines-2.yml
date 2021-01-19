@@ -33,4 +33,4 @@ stages:
         buildType: 'current'
         artifactName: $tag
         itemPattern: '**/$tag'
-        targetPath: '$(Pipeline.Workspace)'
+        targetPath: '$(Build.SourcesDirectory)/$tag'
