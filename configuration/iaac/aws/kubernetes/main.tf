@@ -7,9 +7,9 @@
 
 terraform {
   backend "s3" {
-    bucket = "az-aws-pipeline" # Will be overridden from build
-    key    = "az-aws-pipeline.tfstate" # Will be overridden from build
-    region = "us-east-1"
+    bucket = "1-recipe-app-api-devops-tfstate" # Will be overridden from build
+    key    = "az-aws-pipeline-test-region.tfstate" # Will be overridden from build
+    region = "us-west-2"
   }
 }
 
